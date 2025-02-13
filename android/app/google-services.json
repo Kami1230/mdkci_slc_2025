@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "69979841763",
+    "project_id": "mdkci-ec590",
+    "storage_bucket": "mdkci-ec590.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69979841763:android:907853bbedde44cd1dd1d6",
+        "android_client_info": {
+          "package_name": "com.example.mdkci_slc_2025"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBekNKW5wL2zsckKeZEy7IRHOncnMbEMQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

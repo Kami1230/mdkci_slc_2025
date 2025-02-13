@@ -13,7 +13,7 @@ class Notifications extends StatefulWidget {
 }
 
 class _NotificationsState extends State<Notifications> {
-  final channel = WebSocketChannel.connect(Uri.parse('ws://localhost:8080'));
+  final channel = WebSocketChannel.connect(Uri.parse('wss://secure-brook-93316-938a41b3b17a.herokuapp.com'));
   List<String> messages = [];
 
   @override
@@ -150,9 +150,6 @@ class _NotificationsState extends State<Notifications> {
                           fontFamily: 'Aboreto'
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 20,
                   ),
                 ]
             )
