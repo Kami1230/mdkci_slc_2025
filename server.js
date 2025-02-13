@@ -8,12 +8,20 @@ const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
     console.log('Client connected');
 
-    // Broadcast messages to all connected clients
     ws.on('message', (message) => {
         console.log(`Received: ${message}`);
+        let parsedMessage;
+        try {
+            parsedMessage = JSON.parse(message);
+        } catch (e) {
+            parsedMessage = message.toString();
+        }
+
+        const broadcastMessage = typeof parsedMessage === 'object' ? JSON.stringify(parsedMessage) : parsedMessage;
+
         wss.clients.forEach((client) => {
             if (client.readyState === WebSocket.OPEN) {
-                client.send(message);
+                client.send(broadcastMessage);
             }
         });
     });
