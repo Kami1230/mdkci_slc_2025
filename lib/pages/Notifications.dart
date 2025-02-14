@@ -163,6 +163,7 @@ class _NotificationsState extends State<Notifications> {
               ),
               Expanded(
                 child: ListView.builder(
+                  reverse: true,
                   itemCount: messages.length,
                   itemBuilder: (context, index) {
                     return Padding(
