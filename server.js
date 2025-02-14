@@ -21,8 +21,17 @@ try {
 
 wss.on('connection', (ws) => {
     console.log('Client connected');
+    ws.isAlive = true;
+    ws.on('pong', heartbeat);
+
     ws.send(JSON.stringify({ type: 'history', messages: messages }));
+
     ws.on('message', (message) => {
+        if (message === 'ping') {
+            ws.pong();
+            return;
+        }
+
         console.log(`Received: ${message}`);
         let parsedMessage;
         try {
@@ -36,20 +45,18 @@ wss.on('connection', (ws) => {
         const broadcastMessage = typeof parsedMessage === 'object' ? JSON.stringify(parsedMessage) : parsedMessage;
 
         wss.clients.forEach((client) => {
-            if (client.readyState === WebSocket.OPEN) {
-            client.send(broadcastMessage);
+            if (client !== ws && client.readyState === WebSocket.OPEN) {
+                client.send(broadcastMessage);
             }
         });
     });
-
-    // ws.send('Welcome to the WebSocket server!');
 });
 
 const interval = setInterval(() => {
   wss.clients.forEach((ws) => {
     if (ws.isAlive === false) return ws.terminate();
     ws.isAlive = false;
-    ws.ping(() => {});
+    ws.ping();
   });
 }, 30000);
 
