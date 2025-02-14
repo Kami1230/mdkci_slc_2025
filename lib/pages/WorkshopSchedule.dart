@@ -112,7 +112,7 @@ class _WorkshopScheduleState extends State<WorkshopSchedule> {
             child: ListView(
                 padding: const EdgeInsets.all(8),
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     width: availableScreenWidth,
                     height: 45,
                     child: Text(

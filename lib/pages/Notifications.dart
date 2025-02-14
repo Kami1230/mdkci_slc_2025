@@ -147,7 +147,7 @@ class _NotificationsState extends State<Notifications> {
         Expanded(
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 width: availableScreenWidth,
                 height: 40,
                 child: Text(

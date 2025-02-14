@@ -112,7 +112,7 @@ class _EventScheduleState extends State<EventSchedule> {
         child: ListView(
             padding: const EdgeInsets.all(8),
             children: <Widget>[
-              Container(
+              SizedBox(
                   width: availableScreenWidth,
                   height: 45,
                   child: Text(
@@ -173,7 +173,7 @@ class _EventScheduleState extends State<EventSchedule> {
               ),
               Row(
                 children: [
-                  Container(
+                  SizedBox(
                       width: availableScreenWidth - 50,
                       child: Text(
                         'View Workshop Schedule:',

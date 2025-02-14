@@ -118,7 +118,7 @@ class _MapPageState extends State<MapPage> {
             child: ListView(
                 padding: const EdgeInsets.all(8),
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     width: availableScreenWidth,
                     height: 45,
                     child: Text(
@@ -135,7 +135,7 @@ class _MapPageState extends State<MapPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Container(
+                  SizedBox(
                       width: availableScreenWidth,
                       height: 100,
                       child: Text(
