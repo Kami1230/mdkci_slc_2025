@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import '/pages/HomePage.dart';
 import '/pages/EventSchedule.dart';
@@ -17,14 +19,23 @@ class _NotificationsState extends State<Notifications> {
   List<String> messages = [];
 
   @override
+  @override
   void initState() {
     super.initState();
     channel.stream.listen((message) {
       setState(() {
-        messages.add(message);
+        if (message is String) {
+          var parsedMessage = jsonDecode(message);
+          if (parsedMessage['type'] == 'history') {
+            messages = List<String>.from(parsedMessage['messages']);
+          } else {
+            messages.insert(0, parsedMessage['content']);
+          }
+        }
       });
     });
   }
+
   @override
   void dispose() {
     channel.sink.close();
@@ -134,36 +145,53 @@ class _NotificationsState extends State<Notifications> {
           ]),
         ),
         Expanded(
-            child: ListView(
-                padding: const EdgeInsets.all(8),
-                children: <Widget>[
-                  Container(
-                    width: availableScreenWidth,
-                    height: 45,
-                    child: Text(
-                      "Event Notifications",
-                      textAlign: TextAlign.center, // Center-align the text content
-                      style: TextStyle(
-                          fontSize: 27,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontFamily: 'Aboreto'
-                      ),
-                    ),
+          child: Column(
+            children: [
+              Container(
+                width: availableScreenWidth,
+                height: 40,
+                child: Text(
+                  "Event Notifications",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 27,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontFamily: 'Aboreto'
                   ),
-                ]
-            )
-        ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: messages.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(messages[index]),
-              );
-            },
+                ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: messages.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: Text(
+                            messages[index],
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontFamily: 'Quattrocento',
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
-        ),
+        )
       ]),
     );
   }
