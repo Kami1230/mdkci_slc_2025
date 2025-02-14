@@ -5,6 +5,10 @@ const PORT = process.env.PORT || 8080;
 const server = http.createServer();
 const wss = new WebSocket.Server({ server });
 
+function heartbeat() {
+  this.isAlive = true;
+}
+
 wss.on('connection', (ws) => {
     console.log('Client connected');
 
@@ -27,6 +31,18 @@ wss.on('connection', (ws) => {
     });
 
     ws.send('Welcome to the WebSocket server!');
+});
+
+const interval = setInterval(() => {
+  wss.clients.forEach((ws) => {
+    if (ws.isAlive === false) return ws.terminate();
+    ws.isAlive = false;
+    ws.ping(() => {});
+  });
+}, 30000);
+
+wss.on('close', () => {
+  clearInterval(interval);
 });
 
 server.listen(PORT, () => {
