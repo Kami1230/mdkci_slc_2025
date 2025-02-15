@@ -8,9 +8,7 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 
 class Notifications extends StatefulWidget {
   final String folderName;
-
   const Notifications({required this.folderName, super.key});
-
   static const banner = Color(0xff404040);
 
   @override
@@ -27,19 +25,19 @@ class _NotificationsState extends State<Notifications> {
     channel.stream.listen((message) {
       setState(() {
         try {
-          // Try to parse the message as JSON
           var parsedMessage = jsonDecode(message);
 
           if (parsedMessage['type'] == 'history') {
-            // Handle history messages
             List<dynamic> historyMessages = parsedMessage['messages'];
-            messages = historyMessages.map((item) => item['content'].toString()).toList();
-          } else {
-            // Handle other JSON messages
+            messages = historyMessages.map((item) => item.toString()).toList();
+          } else if (parsedMessage['type'] == 'message') {
             messages.insert(0, parsedMessage['content'].toString());
+          } else if (parsedMessage['type'] == 'clear') {
+            messages.clear();
           }
         } catch (e) {
-          // If JSON parsing fails, treat it as a simple string message
+          print('Error decoding message: $e');
+          print('Original message: $message');
           messages.insert(0, message.toString());
         }
       });
@@ -61,10 +59,7 @@ class _NotificationsState extends State<Notifications> {
 
   @override
   Widget build(BuildContext context) {
-    availableScreenWidth = MediaQuery
-        .of(context)
-        .size
-        .width - 50;
+    double availableScreenWidth = MediaQuery.of(context).size.width - 50;
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       body: Column(children: [
@@ -72,96 +67,103 @@ class _NotificationsState extends State<Notifications> {
           padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 20),
           alignment: Alignment.bottomCenter,
           height: 100,
-          decoration: BoxDecoration(color: MapPage.banner),
-          child:
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  "MDKCI SLC 2025",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
-              ],
-            ),
-            Row(
+          decoration: BoxDecoration(color: Notifications.banner),
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.home,
-                      size: 20,
-                      color: Colors.white,
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      "MDKCI SLC 2025",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomePage()),
-                      );
-                    },
-                  ),
+                  ],
                 ),
-                Container(
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.notifications,
-                      size: 20,
-                      color: Colors.white,
+                Row(
+                  children: [
+                    Container(
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.home,
+                          size: 20,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomePage()),
+                          );
+                        },
+                      ),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const Notifications(folderName: 'pages',)),
-                      );
-                    },
-                  ),
-                ),
-                Container(
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.calendar_month,
-                      size: 20,
-                      color: Colors.white,
+                    Container(
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.notifications,
+                          size: 20,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Notifications(
+                                  folderName: 'pages',
+                                )),
+                          );
+                        },
+                      ),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const EventSchedule(
-                              folderName: 'pages',)),
-                      );
-                    },
-                  ),
-                ),
-                Container(
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.map,
-                      size: 20,
-                      color: Colors.white,
+                    Container(
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.calendar_month,
+                          size: 20,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const EventSchedule(
+                                  folderName: 'pages',
+                                )),
+                          );
+                        },
+                      ),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const MapPage(
-                          folderName: 'pages',)),
-                      );
-                    },
-                  ),
-                ),
-              ],
-            )
-          ]),
+                    Container(
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.map,
+                          size: 20,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const MapPage(
+                                  folderName: 'pages',
+                                )),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                )
+              ]),
         ),
         Expanded(
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 width: availableScreenWidth,
                 height: 40,
                 child: Text(
@@ -171,17 +173,17 @@ class _NotificationsState extends State<Notifications> {
                       fontSize: 27,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
-                      fontFamily: 'Aboreto'
-                  ),
+                      fontFamily: 'Aboreto'),
                 ),
               ),
               Expanded(
                 child: ListView.builder(
-                  reverse: true,
+                  // reverse: true,
                   itemCount: messages.length,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 4, horizontal: 8),
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.blue,
@@ -191,7 +193,7 @@ class _NotificationsState extends State<Notifications> {
                           padding: const EdgeInsets.all(12),
                           child: Text(
                             messages[index],
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
