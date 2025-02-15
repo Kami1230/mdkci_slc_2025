@@ -8,8 +8,11 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 
 class Notifications extends StatefulWidget {
   final String folderName;
+
   const Notifications({required this.folderName, super.key});
+
   static const banner = Color(0xff404040);
+
   @override
   State<Notifications> createState() => _NotificationsState();
 }
@@ -19,20 +22,31 @@ class _NotificationsState extends State<Notifications> {
   List<String> messages = [];
 
   @override
-  @override
   void initState() {
     super.initState();
     channel.stream.listen((message) {
       setState(() {
-        if (message is String) {
+        try {
+          // Try to parse the message as JSON
           var parsedMessage = jsonDecode(message);
+
           if (parsedMessage['type'] == 'history') {
-            messages = List<String>.from(parsedMessage['messages']);
+            // Handle history messages
+            List<dynamic> historyMessages = parsedMessage['messages'];
+            messages = historyMessages.map((item) => item['content'].toString()).toList();
           } else {
-            messages.insert(0, parsedMessage['content']);
+            // Handle other JSON messages
+            messages.insert(0, parsedMessage['content'].toString());
           }
+        } catch (e) {
+          // If JSON parsing fails, treat it as a simple string message
+          messages.insert(0, message.toString());
         }
       });
+    }, onError: (error) {
+      print('WebSocket error: $error');
+    }, onDone: () {
+      print('WebSocket connection closed');
     });
   }
 
@@ -147,7 +161,7 @@ class _NotificationsState extends State<Notifications> {
         Expanded(
           child: Column(
             children: [
-              SizedBox(
+              Container(
                 width: availableScreenWidth,
                 height: 40,
                 child: Text(
