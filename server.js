@@ -24,17 +24,6 @@ async function initializeStorage() {
     console.log('Loaded messages:', messages);
 }
 
-// Function to clear the directory
-async function clearDirectory() {
-    const files = await fs.promises.readdir(directoryPath);
-    for (const file of files) {
-        await fs.promises.unlink(path.join(directoryPath, file));
-    }
-    messages = [];
-    await storage.setItem('messages', messages);
-    console.log('Directory cleared');
-}
-
 wss.on('connection', async (ws) => {
     console.log('Client connected');
     ws.isAlive = true;
@@ -50,10 +39,11 @@ wss.on('connection', async (ws) => {
             return;
         }
 
-        if (message === 'clear_directory') {
-            await clearDirectory();
+        if (message === 'clear') {
+            messages = [];
+            await storage.setItem('messages', messages);
             wss.clients.forEach((client) => {
-                client.send(JSON.stringify({ type: 'directory_cleared' }));
+                client.send(JSON.stringify({ type: 'clear' }));
             });
             return;
         }
