@@ -18,8 +18,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     availableScreenWidth = MediaQuery.of(context).size.width - 50;
     return Scaffold(
-        backgroundColor: Colors.grey[100],
-        body: Column(children: [
+      backgroundColor: Colors.grey[100],
+      body: Column(
+        children: [
           // Header Section
           Container(
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 17),
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                           context,
                           MaterialPageRoute(builder: (context) => const HomePage()),
                         );
-                        },
+                      },
                     ),
                   ),
                   Container(
@@ -109,72 +110,74 @@ class _HomePageState extends State<HomePage> {
               )
             ]),
           ),
-          const SizedBox(
-            height: 25,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center, // Center the content horizontally
-              children: [
-                Flexible( // Allows the Text to wrap and take available space
-                  child: Text(
-                    "WELCOME MICHIGAN \nDISTRICT TO SLC 2025!",
-                    textAlign: TextAlign.center, // Center-align the text content
-                    style: TextStyle(
-                      fontSize: 27,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                        fontFamily: 'Aboreto'
+          // Scrollable content
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 25),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            "WELCOME MICHIGAN \nDISTRICT TO SLC 2025!",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 27,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontFamily: 'Aboreto'
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 25,
-          ),
-          Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible( // Allows the Text to wrap and take available space
-                child: Image.asset(
-                  'assets/Images/Dboard.png',
-                  alignment: Alignment.center,
-                  ),
-                ),
-            ],
-          ),
-        ),
-          const SizedBox(
-            height: 25,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center, // Center the content horizontally
-              children: [
-                Flexible( // Allows the Text to wrap and take available space
-                  child: Text(
-                    "Welcome to the 74th Annual Michigan District of Key Club Service Leadership Conference (SLC 2025)! We are thrilled to invite you to join us from February 21-23, 2025, at the Crowne Plaza Lansing West for an unforgettable experience of service, leadership, and growth. \n \n This year's theme, \"Service Under The Sea,\" promises to make a splash as we celebrate another year of outstanding achievements and the 100th birthday of Key Club International! ",
-                    textAlign: TextAlign.center, // Center-align the text content
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.black,
-                        fontFamily: 'Quattrocento'
+                  const SizedBox(height: 25),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Flexible(
+                          child: Image.asset(
+                            'assets/Images/Dboard.png',
+                            alignment: Alignment.center,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 25),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            "Welcome to the 74th Annual Michigan District of Key Club Service Leadership Conference (SLC 2025)! We are thrilled to invite you to join us from February 21-23, 2025, at the Crowne Plaza Lansing West for an unforgettable experience of service, leadership, and growth. \n \n This year's theme, \"Service Under The Sea,\" promises to make a splash as we celebrate another year of outstanding achievements and the 100th birthday of Key Club International! ",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black,
+                                fontFamily: 'Quattrocento'
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 25),
+                ],
+              ),
             ),
           ),
-          const SizedBox(
-            height: 25,
-          ),
-        ])
+        ],
+      ),
     );
   }
 }

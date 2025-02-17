@@ -3,7 +3,7 @@ require File.expand_path('../packages/flutter_tools/bin/podhelper', __FILE__)
 # /Users/kami/flutter/packages/flutter_tools/bin
 # import 'package: flutter_tools/bin/podhelper'
 
-platform :ios, '11.0'
+platform :ios, '12.0'
 
 target 'Runner' do
   use_frameworks!
