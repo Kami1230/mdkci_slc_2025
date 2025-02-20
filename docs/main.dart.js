@@ -60313,7 +60313,7 @@ p=A.b5(f,A.cq("Friday February 21",A.bV(f,f,B.j,f,f,f,f,f,d,f,f,20,f,f,f,f,f,!0,
 n=g.d
 o=A.ej()
 m=A.dv(8)
-n=A.b5(f,A.cq("3:00 \u2013 5:00 PM Check-in/Registration (hotel does not guarantee room availability until 4PM) \n 3:00 \u2013 5:00 PM Contest Registration/Informal Social Time \n 5:00 \u2013 5:30 PM Divisional Orientation \n 5:30 \u2013 6:00 PM Candidates Meeting (for all candidates who have filed or are considering running for a district board position) - Reo \n 6:00 \u2013 6:30 PM Advisors/Chaperone Meeting - Reo \n 7:00 \u2013 10:00 PM Dinner and Opening Session - Ballroom \n 10:00 -11:30 PM Dance - Ballroom \n 12:00-1:00 AM Circle K Senior Night (Seniors Only!) \n 12:00 \u2013 6:00 AM Curfew",A.bV(f,f,B.k,f,f,f,f,f,d,f,f,15,f,f,f,f,f,!0,f,f,f,f,f,f,f,f),B.G),new A.bN(f,f,o,m,f,f,B.H),240,f,f,n)
+n=A.b5(f,A.cq("3:00 \u2013 5:00 PM Check-in/Registration (hotel does not guarantee room availability until 4PM) \n 3:00 \u2013 5:00 PM Contest Registration/Informal Social Time \n 5:00 \u2013 5:30 PM Divisional Orientation \n 5:30 \u2013 6:00 PM Candidates Meeting (for all candidates who have filed or are considering running for a district board position) \n 6:00 \u2013 6:30 PM Advisors/Chaperone Meeting  \n 7:00 \u2013 10:00 PM Dinner and Opening Session \n 10:00 -11:30 PM Dance \n 12:00-1:00 AM Circle K Senior Night \n 12:00 \u2013 6:00 AM Curfew",A.bV(f,f,B.k,f,f,f,f,f,d,f,f,15,f,f,f,f,f,!0,f,f,f,f,f,f,f,f),B.G),new A.bN(f,f,o,m,f,f,B.H),250,f,f,n)
 m=g.d
 o=A.ej()
 l=A.dv(12)
@@ -60324,7 +60324,7 @@ l=A.eE(A.c([A.o8(A.cq("View Workshop Schedule:",A.bV(f,f,A.al(e),f,f,f,f,f,d,f,f
 o=g.d
 k=A.ej()
 j=A.dv(8)
-o=A.b5(f,A.cq("7:30-8:30 AM Breakfast \n 9:00 \u2013 9:45 AM Service Project & Workshops I \n 09:55 \u2013 10:40 AM Service Project & Workshops II \n 10:50 \u2013 11:35 AM Service Project & Workshops III \n 11:45 \u2013 12:30 AM Service Project & Workshops IIII \n 1:00 \u2013 2:00 PM Lunch \n 1:30 \u2013 3:15 PM Free Time & Service Projects \n 1:30 \u2013 3:15 PM Contest Judging (Oratorical, Talent, & other contests) \n 2:00 - 3:00 PM Candidate Meet & Greet - Lobby \n 3:30 \u2013 5:30 PM Caucusing \n 6:30 \u2013 9:30 PM Awards Banquet - Ballroom \n 9:30 - 10:00 PM Nominating Conference - Ballroom \n 10:00 \u2013 11:30 PM Governor\u2019s Ball (dance) - Ballroom \n 12:00 \u2013 6:00 AM Curfew",A.bV(f,f,B.k,f,f,f,f,f,d,f,f,15,f,f,f,f,f,!0,f,f,f,f,f,f,f,f),B.G),new A.bN(f,f,k,j,f,f,B.H),300,f,f,o)
+o=A.b5(f,A.cq("9:00 \u2013 9:30 AM Service Project & Workshops I \n 09:40 \u2013 10:10 AM Service Project & Workshops II \n 10:20 \u2013 10:50 AM Service Project & Workshops III \n 11:00 \u2013 11:30 AM Service Project & Workshops IIII \n 12:00 \u2013 1:00 PM Lunch \n 1:00 \u2013 3:00 PM Free Time & Candidate Meet and Greet \n 1:00 \u2013 3:00 PM Contest Judging (Oratorical, Talent, & other contests) \n 4:00 \u2013 6:00 PM Caucusing \n 6:30 \u2013 10:00 PM Awards Banquet \n 10:00 \u2013 11:30 PM Governor\u2019s Ball (dance) \n 12:00 \u2013 6:00 AM Curfew",A.bV(f,f,B.k,f,f,f,f,f,d,f,f,15,f,f,f,f,f,!0,f,f,f,f,f,f,f,f),B.G),new A.bN(f,f,k,j,f,f,B.H),250,f,f,o)
 j=g.d
 k=A.ej()
 i=A.dv(12)
@@ -60333,7 +60333,7 @@ j=A.b5(f,A.cq("Sunday February 22",A.bV(f,f,B.j,f,f,f,f,f,d,f,f,20,f,f,f,f,f,!0,
 i=g.d
 k=A.ej()
 h=A.dv(8)
-return A.Df(B.ct,A.fh(A.c([r,A.rc(A.a8v(A.c([q,p,n,B.ba,m,l,o,B.ba,j,A.b5(f,A.cq("7:45 - 8:15 Non-Denominational Service - Ballroom E \n 8:30 \u2013 10:00 AM House of Delegates - Ballroom E/F \n 10:30 \u2013 1:00 PM Governor\u2019s Farewell Brunch - Ballroom A-F \n 12:00 Noon Check out \n 1:30 \u2013 2:30 PM 2024-2025 & 2025-2026 Joint Board Meeting",A.bV(f,f,B.k,f,f,f,f,f,d,f,f,15,f,f,f,f,f,!0,f,f,f,f,f,f,f,f),B.G),new A.bN(f,f,k,h,f,f,B.H),120,f,f,i),B.ba],s),B.dQ))],s),B.an,B.J))}}
+return A.Df(B.ct,A.fh(A.c([r,A.rc(A.a8v(A.c([q,p,n,B.ba,m,l,o,B.ba,j,A.b5(f,A.cq("8:30 \u2013 10:00 AM House of Delegates \n 10:30 \u2013 1:00 PM Governor\u2019s Farewell Brunch \n 12:00 Noon Check out \n 1:30 \u2013 2:30PM 2024-2025 & 2025-2026 Joint Board Meeting",A.bV(f,f,B.k,f,f,f,f,f,d,f,f,15,f,f,f,f,f,!0,f,f,f,f,f,f,f,f),B.G),new A.bN(f,f,k,h,f,f,B.H),60,f,f,i),B.ba],s),B.dQ))],s),B.an,B.J))}}
 A.a1V.prototype={
 $0(){var s=A.cy(new A.a1U(),null,t.z)
 A.cn(this.a).bX(s)},
