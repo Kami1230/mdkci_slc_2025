@@ -235,7 +235,7 @@ class _EventScheduleState extends State<EventSchedule> {
                   ),
                   Container(
                       width: availableScreenWidth,
-                      height: 60,
+                      height: 70,
                       decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(8)),
                       child: Text(
                           '7:45 - 8:15 Non-Denominational Service - Ballroom E \n 8:30 – 10:00 AM House of Delegates - Ballroom E/F \n 10:30 – 1:00 PM Governor’s Farewell Brunch - Ballroom A-F \n 12:00 Noon Check out \n 1:30 – 2:30 PM 2024-2025 & 2025-2026 Joint Board Meeting',
