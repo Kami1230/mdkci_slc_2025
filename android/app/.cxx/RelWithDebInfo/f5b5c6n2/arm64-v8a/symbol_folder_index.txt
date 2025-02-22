@@ -1,0 +1,1 @@
+/Users/kami/AndroidStudioProjects/mdkci_slc_2025/build/app/intermediates/cxx/RelWithDebInfo/f5b5c6n2/obj/arm64-v8a

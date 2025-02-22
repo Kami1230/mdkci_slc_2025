@@ -1,0 +1,2 @@
+/Users/kami/AndroidStudioProjects/mdkci_slc_2025/android/app/.cxx/Debug/412o1k40/x86_64/CMakeFiles/edit_cache.dir
+/Users/kami/AndroidStudioProjects/mdkci_slc_2025/android/app/.cxx/Debug/412o1k40/x86_64/CMakeFiles/rebuild_cache.dir

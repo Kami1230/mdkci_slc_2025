@@ -1,0 +1,2 @@
+/Users/kami/AndroidStudioProjects/mdkci_slc_2025/android/app/.cxx/RelWithDebInfo/f5b5c6n2/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/kami/AndroidStudioProjects/mdkci_slc_2025/android/app/.cxx/RelWithDebInfo/f5b5c6n2/armeabi-v7a/CMakeFiles/rebuild_cache.dir
